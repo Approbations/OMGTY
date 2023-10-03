@@ -10,8 +10,7 @@ internal class Program
         answer = 0; 
         for (int i = 0; i < all; i++)
         {
-            string[] line = Console.ReadLine().Split();
-            n1 = int.Parse(line[0]); n2 = int.Parse(line[1]);
+            n1 = int.Parse(Console.ReadLine()); n2 = int.Parse(Console.ReadLine());
             answer += Math.Max(n1, n2);
             difference = Math.Abs(n1 - n2);
             ostat_ot_del = difference % 3;
