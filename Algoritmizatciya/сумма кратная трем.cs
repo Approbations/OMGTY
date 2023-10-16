@@ -6,7 +6,7 @@ internal class Program
     {
         int all = int.Parse(Console.ReadLine()); 
         int min1, min2, answer, n1, n2, difference, ostat_ot_del;
-        min1 = min2 = 10000; int m1, m2; m1 = min1; m2 = min2;
+        min1 = min2 = 10000; int m1, m2;
         answer = 0; 
         for (int i = 0; i < all; i++)
         {
@@ -17,14 +17,10 @@ internal class Program
             if (ostat_ot_del > 0)
             {
                 m1 = min1; m2 = min2;
-                for (int j = 1; j < 3; j++)
-                {
-                    int r0 = (ostat_ot_del + j) % 3;
-                    if (r0 == 1 & j == 1) { m1 = Math.Min(m1, difference + min1); }
-                    else if (r0 == 1 & j == 2) { m1 = Math.Min(m1, difference + min2); }
-                    else if (r0 == 2 & j == 1) { m2 = Math.Min(m2, difference + min1); }
-                    else if (r0 == 2 & j == 2) { m2 = Math.Min(m2, difference + min2); }
-                }
+                
+                m1 = Math.Min(m1, Math.Min((difference + min1) % 3 == 1 ? difference + min1: 1000, (difference + min2) % 3 == 1 ? difference + min2: 1000));
+                m2 = Math.Min(m2, Math.Min((difference + min1) % 3 == 2 ? difference + min1: 1000, (difference + min2) % 3 == 2 ? difference + min2: 1000));
+
                 if (ostat_ot_del == 1) { m1 = Math.Min(m1, difference); }
                 else { m2 = Math.Min(m2, difference); }
                 min1 = m1; min2 = m2;
