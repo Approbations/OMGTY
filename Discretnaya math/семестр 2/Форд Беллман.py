@@ -23,7 +23,7 @@ for i in range(1, int(edges[0])):
         break
     prev_lst = now_list.copy()
 #проверка на отриц вес
-flag = False
+prev_lst = now_list.copy()
 now_list = []
 i += 1
 for j in range(int(edges[0])):
