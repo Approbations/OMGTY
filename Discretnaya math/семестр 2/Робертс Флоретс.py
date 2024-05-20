@@ -24,12 +24,17 @@ matrix = [list(map(int, input().split())) for _ in range(lot)]
 dct = dict()
 for i in range(lot):
     dct[i] = [n for n, j in enumerate(matrix[i]) if j == 1]
-# ответы все для самой первой вершины
-res = getStrL(6, dct[0])
-for i in res:
-    if '0' in i:
-        continue
-    if matrix[int(i[-1])][0] == 1:
-        print("Цикл", "1" + ''.join(list(map(lambda x: str(int(x) + 1), list(i)))))
-    else:
-        print("Путь", "1" + ''.join(list(map(lambda x: str(int(x) + 1), list(i)))))
+
+path, cycle = [], []
+for j in range(7):
+    res = getStrL(6, dct[j])
+    for i in res:
+        if str(j) in i:
+            continue
+        if matrix[int(i[-1])][0] == 1:
+            cycle.append(str(j + 1) + ''.join(list(map(lambda x: str(int(x) + 1), list(i)))))
+        else:
+            path.append(str(j + 1) + ''.join(list(map(lambda x: str(int(x) + 1), list(i)))))
+    print(f"Вершина {j + 1}\nПути: {', '.join(path)}\nЦиклы: {', '.join(cycle)}")
+    path.clear()
+    cycle.clear()
